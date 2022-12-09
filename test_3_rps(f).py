@@ -10,7 +10,7 @@ class Var(IntEnum):
     Scissors = 2
 
 def get_player_choice():
-    choices = [f"{action.name}[{action.value}]" for action in Action]
+    choices = [f"{action.name}[{action.value}]" for action in Var]
     choices_str = ", ".join(choices)
     selection = int(input(f"Сделайте выбор — ({choices_str}): "))
     action = Var(selection)
