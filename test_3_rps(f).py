@@ -9,3 +9,9 @@ class Var(IntEnum):
     Paper = 1
     Scissors = 2
 
+def get_player_choice():
+    choices = [f"{action.name}[{action.value}]" for action in Action]
+    choices_str = ", ".join(choices)
+    selection = int(input(f"Сделайте выбор — ({choices_str}): "))
+    action = Var(selection)
+    return action
