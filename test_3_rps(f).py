@@ -4,4 +4,8 @@ import random
 from enum import IntEnum
 
 
-class Var 
+class Var(IntEnum):
+    Rock = 0
+    Paper = 1
+    Scissors = 2
+
