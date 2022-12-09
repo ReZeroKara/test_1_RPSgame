@@ -28,6 +28,6 @@ while True:
             print("Камень бьет ножницы! Вы проиграли.")
     
     retry = " "
-    retry = input("Ещё раз? (д/н): ")
-    if retry.lower() != "д":
+    retry = input("Ещё раз? (да/нет): ")
+    if retry.lower() != "да":
         break
