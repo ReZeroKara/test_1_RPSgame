@@ -15,3 +15,9 @@ def get_player_choice():
     selection = int(input(f"Сделайте выбор — ({choices_str}): "))
     action = Var(selection)
     return action
+
+def get_computer_chice():
+    choice = random.randint(0, len(Var) - 1)
+    action = Var(choice)
+    return action
+
