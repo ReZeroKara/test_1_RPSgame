@@ -16,7 +16,7 @@ def get_player_choice():
     action = Var(selection)
     return action
 
-def get_computer_chice():
+def get_computer_choice():
     choice = random.randint(0, len(Var) - 1)
     action = Var(choice)
     return action
@@ -43,3 +43,12 @@ def determine_winner(user_action, computer_action):
 while True:
     try:
         user_action = get_player_choice()
+    except ValueError as e:
+        range_str = f"[0, {len(Var) - 1}]"
+        print(f"Некорректный ввод. Введите значение из промежутка {range_str}")
+        continue
+    computer_action = get_computer_choice()
+    determine_winner(user_action, computer_action)
+    play_again = input("Сыграем еще? (да/нет): ")
+    if play_again.lower() != "да":
+        break
