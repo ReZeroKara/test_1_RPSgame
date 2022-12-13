@@ -39,3 +39,7 @@ def determine_winner(user_action, computer_action):
             print("Ножницы режут бумагу! Вы победили!")
         else:
             print("Камень бьет ножницы! Вы проиграли.")
+
+while True:
+    try:
+        user_action = get_player_choice()
