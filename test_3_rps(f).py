@@ -16,8 +16,39 @@ def get_player_choice():
     action = Var(selection)
     return action
 
-def get_computer_chice():
+def get_computer_choice():
     choice = random.randint(0, len(Var) - 1)
     action = Var(choice)
     return action
 
+def determine_winner(user_action, computer_action):
+    if user_action == computer_action:
+        print(f"Оба пользователя выбрали {user_action.name}. Ничья!")
+    elif user_action == Var.Rock:
+        if computer_action == Var.Scissors:
+            print("Камень бьет ножницы! Вы победили!")
+        else:
+            print("Бумага оборачивает камень! Вы проиграли.")
+    elif user_action == Var.Paper:
+        if computer_action == Var.Rock:
+            print("Бумага оборачивает камень! Вы победили!")
+        else:
+            print("Ножницы режут бумагу! Вы проиграли.")
+    elif user_action == Var.Scissors:
+        if computer_action == Var.Paper:
+            print("Ножницы режут бумагу! Вы победили!")
+        else:
+            print("Камень бьет ножницы! Вы проиграли.")
+
+while True:
+    try:
+        user_action = get_player_choice()
+    except ValueError as e:
+        range_str = f"[0, {len(Var) - 1}]"
+        print(f"Некорректный ввод. Введите значение из промежутка {range_str}")
+        continue
+    computer_action = get_computer_choice()
+    determine_winner(user_action, computer_action)
+    play_again = input("Сыграем еще? (да/нет): ")
+    if play_again.lower() != "да":
+        break
