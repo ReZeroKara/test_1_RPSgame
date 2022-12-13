@@ -4,11 +4,13 @@ import random
 from enum import IntEnum
 
 
+# Связываем каждый вариант фигуры в игре с числом
 class Var(IntEnum):
     Rock = 0
     Paper = 1
     Scissors = 2
 
+# Функция для получения выбора игрока
 def get_player_choice():
     choices = [f"{action.name}[{action.value}]" for action in Var]
     choices_str = ", ".join(choices)
@@ -16,11 +18,13 @@ def get_player_choice():
     action = Var(selection)
     return action
 
+# Получаем вариант компьютера
 def get_computer_choice():
     choice = random.randint(0, len(Var) - 1)
     action = Var(choice)
     return action
 
+# Функция для определения победителя
 def determine_winner(user_action, computer_action):
     if user_action == computer_action:
         print(f"Оба пользователя выбрали {user_action.name}. Ничья!")
@@ -40,9 +44,11 @@ def determine_winner(user_action, computer_action):
         else:
             print("Камень бьет ножницы! Вы проиграли.")
 
+# Собственно цикл игры, будет продолжаться пока игрок её не остановит
 while True:
     try:
         user_action = get_player_choice()
+# Защита от неправильного ввода;)
     except ValueError as e:
         range_str = f"[0, {len(Var) - 1}]"
         print(f"Некорректный ввод. Введите значение из промежутка {range_str}")
